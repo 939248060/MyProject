@@ -67,7 +67,7 @@ public class Complex implements Cloneable{
 		sb.append(") = ");
 		sb.append(c1.getRealPart()*c2.getRealPart()-c1.getImaginaryPart()*c2.getImaginaryPart());
 		sb.append(" + ");
-		sb.append(c1.getImaginaryPart()*c2.getImaginaryPart()+c1.getImaginaryPart()*c2.getRealPart()+"i");
+		sb.append(c1.getImaginaryPart()*c2.getRealPart()+c1.getRealPart()*c2.getImaginaryPart()+"i");
 		System.out.println(sb.toString());
 	}
 	public static void divide(Complex c1,Complex c2) {
@@ -99,7 +99,7 @@ public class Complex implements Cloneable{
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append(a);
-		sb.append(b!=0?b+"i":"");
+		sb.append(b!=0?" + "+b+"i":"");
 		return sb.toString();
 	}
 	public float getRealPart() {
@@ -120,7 +120,8 @@ public class Complex implements Cloneable{
 		Complex.divide(cp1, cp2);
 		cp1.abc();
 		cp2.abc();
-		
+		System.out.println(cp1.toString());
+		System.out.println(cp2.toString());
 	}
 	
 }
