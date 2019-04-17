@@ -1,6 +1,5 @@
 package lianxi5;
 
-import java.util.Random;
 
 public class Test {
 
