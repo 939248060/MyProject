@@ -65,9 +65,9 @@ public class Complex implements Cloneable{
 		sb.append(" + ");
 		sb.append(c2.getImaginaryPart());
 		sb.append(") = ");
-		sb.append(c1.getRealPart()*c2.getRealPart());
+		sb.append(c1.getRealPart()*c2.getRealPart()-c1.getImaginaryPart()*c2.getImaginaryPart());
 		sb.append(" + ");
-		sb.append(c1.getImaginaryPart()*c2.getImaginaryPart()+"i");
+		sb.append(c1.getImaginaryPart()*c2.getImaginaryPart()+c1.getImaginaryPart()*c2.getRealPart()+"i");
 		System.out.println(sb.toString());
 	}
 	public static void divide(Complex c1,Complex c2) {
@@ -81,19 +81,20 @@ public class Complex implements Cloneable{
 		sb.append(" + ");
 		sb.append(c2.getImaginaryPart());
 		sb.append(") = ");
-		sb.append(c1.getRealPart()/c2.getRealPart());
+		sb.append((c1.getRealPart()*c2.getRealPart()+c1.getImaginaryPart()*c2.getImaginaryPart())/(c2.getRealPart()*c2.getRealPart()+c2.getImaginaryPart()*c2.getImaginaryPart()));
 		sb.append(" + ");
-		sb.append(c1.getImaginaryPart()/c2.getImaginaryPart()+"i");
+		sb.append((c1.getImaginaryPart()*c2.getRealPart()-c1.getRealPart()*c2.getImaginaryPart())/(c2.getRealPart()*c2.getRealPart()+c2.getImaginaryPart()*c2.getImaginaryPart())+"i");
 		System.out.println(sb.toString());
 	}
 	public void abc() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("|(");
-		sb.append(b);
+		sb.append(a);
 		sb.append(" + ");
 		sb.append(b);
 		sb.append(")| =");
 		sb.append(Math.sqrt(((a*a)+(b*b))));
+		System.out.println(sb.toString());
 	}
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -114,6 +115,12 @@ public class Complex implements Cloneable{
 		Complex cp1 = new Complex(3.5f,5.5f);
 		Complex cp2 = new Complex(-3.5f,1f);
 		Complex.add(cp1, cp2);
+		Complex.substract(cp1, cp2);
+		Complex.multiply(cp1, cp2);
+		Complex.divide(cp1, cp2);
+		cp1.abc();
+		cp2.abc();
+		
 	}
 	
 }
