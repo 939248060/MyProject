@@ -8,6 +8,7 @@ public class GeometricObject implements Colorable{
 		this.side = side;
 		if(side>0) {
 			howToColor();
+			
 		}
 	}
 
