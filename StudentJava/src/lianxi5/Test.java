@@ -4,8 +4,6 @@ package lianxi5;
 public class Test {
 
 	public static void main(String[] args) {
-               //定义x变量
-		//定义x变量
 		//定义x变量
 		int x = 0;
 		
