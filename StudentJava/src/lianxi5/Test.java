@@ -6,6 +6,7 @@ public class Test {
 	public static void main(String[] args) {
 
 		int x = 0;
+		
 		while (x < 100) {
 			Car c = CarFactory();
 			c.execute();
