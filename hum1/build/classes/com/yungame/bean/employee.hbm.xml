@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-18 21:44:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yungame.bean.employee" table="EMPLOYEE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="eid" type="java.lang.String">
+            <column name="EID" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <many-to-one name="dept" class="com.yungame.bean.department" fetch="join" lazy="false">
+            <column name="DEPT_EMP" />
+        </many-to-one>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
+        </property>
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        <many-to-one name="spouse" class="com.yungame.bean.Spouse" unique="true" not-null="false"
+   column="spouse_id" cascade="all"/>
+        <many-to-one name="education" class="com.yungame.bean.Education" unique="true" not-null="false"
+   column="education_id" cascade="all" lazy="false"/>
+   <many-to-one name="posts" class="com.yungame.bean.Posts" not-null="false"
+   column="posts_id"  cascade="save-update" lazy="false"/>
+    </class>
+</hibernate-mapping>

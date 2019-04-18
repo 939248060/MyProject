@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/tx 
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+       					   
+       <bean id="Empdao" class="com.yungame.dao.EmloyeeDao">
+          <property name="sessionFactory" ref="sessionFactory"></property>
+       </bean>
+       <bean id="EmpSerive" class="com.yungame.service.EmpService">
+          <property name="EmpDao" ref="Empdao"></property>
+          <property name="DepDao" ref="Depdao"></property>
+       </bean>
+       <bean id="Empaction" class="com.yungame.actions.EmpAction" scope="prototype">
+       <property name="empService" ref="EmpSerive"></property>
+       <property name="posService" ref="Postsservice"></property>
+       </bean>		   
+       
+</beans>

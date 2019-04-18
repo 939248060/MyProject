@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-18 21:44:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yungame.bean.Education" table="EDUCATION">
+        <id name="eduId" type="java.lang.Integer">
+            <column name="EDUID" />
+            <generator class="identity" />
+        </id>
+        <property name="education" type="java.lang.String">
+            <column name="EDUCATION" />
+        </property>
+        <property name="major" type="java.lang.String">
+            <column name="MAJOR" />
+        </property>
+        <property name="graduationTime" type="java.util.Date">
+            <column name="GRADUATIONTIME" />
+        </property>
+        <property name="graduationSchool" type="java.lang.String">
+            <column name="GRADUATIONSCHOOL" />
+        </property>
+        <property name="language" type="java.lang.String">
+            <column name="LANGUAGE" />
+        </property>
+        <one-to-one name="emp" property-ref="education"  cascade="save-update"  class="com.yungame.bean.employee" lazy="false"/>
+     </class>
+</hibernate-mapping>

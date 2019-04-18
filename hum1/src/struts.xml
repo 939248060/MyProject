@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<package name="default" namespace="/" extends="json-default,struts-default">
+		<interceptors>
+			<interceptor name="authority" class="AuthInter">
+                <param name="excludeMethods">login</param>			
+			</interceptor>	
+			<interceptor-stack name="authInterceptStack">
+			    <interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority">
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="authInterceptStack" />
+ 		<default-action-ref name="Users_login" />
+		<global-results>
+			<result name="login">/users/Users_login.jsp</result>
+		</global-results>
+		<action name="Users_*" class="loginAction"
+			method="{1}">
+			<result name="login">/users/Users_login.jsp</result>
+			<result name="input">/users/Users_login.jsp</result>
+			<result name="success" type="redirect">/users/Users_login_success.jsp</result>
+		</action>
+		<action name="Emp-*-*Emp" class="Empaction"
+			method="{1}{2}Emp">
+			<result name="input">/WEB-INF/views/{2}Emp.jsp</result>
+			<result name="{1}{2}Emp">/WEB-INF/views/{1}{2}Emp.jsp</result>
+			<result name="success" type="redirectAction">Emp-Sh-owEmp.action</result>
+			<result name="getsuccess" type="json">
+			  
+			</result>
+		</action>
+		<action name="Dep-*-*Dep" class="DepAction"
+			method="{1}{2}Dep">
+			<result name="input">/WEB-INF/views/{2}Dep.jsp</result>
+			<result name="{1}{2}Dep">/WEB-INF/views/{1}{2}Dep.jsp</result>
+			<result name="success" type="redirectAction">Dep-Sh-owDep.action</result>
+		</action>
+		<action name="Edu-*" class="EduAction"
+			method="{1}Action">
+			<result name="success">/WEB-INF/views/ShowEdu.jsp</result>
+			<result name="AddEdu">/WEB-INF/views/AddEdu.jsp</result>
+			<result name="dosuccess" type="redirectAction">Edu-findAll.action</result>
+			<result name="addsuccess" type="redirectAction">Emp-Sh-owEmp.action</result>
+		</action>
+		<action name="Pos-*" class="PosAction"
+			method="{1}Action">
+			<result name="addMet">/WEB-INF/views/AddPos.jsp</result>
+			<result name="dosuccess" type="redirectAction">Dep-Sh-owDep.action</result>
+		    <result name="success">/WEB-INF/views/ShowPos.jsp</result>
+		</action>
+		<action name="Spo-*" class="SpoAction"
+			method="{1}Action">
+		    <result name="success">/WEB-INF/views/ShowSpo.jsp</result>
+		    <result name="addPage">/WEB-INF/views/AddSpo.jsp</result>
+		    <result name="dosuccess" type="redirectAction">Emp-Sh-owEmp.action</result>
+		</action>
+		<action name="index">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+	</package>
+
+</struts>

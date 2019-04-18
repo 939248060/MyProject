@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.yungame.bean.Spouse" table="SPOUSE">
+        <id name="sid" type="java.lang.Integer">
+            <column name="SID" />
+            <generator class="identity" />
+        </id>
+        <property name="sname" type="java.lang.String">
+            <column name="SNAME" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="AGE" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
+        </property>
+        <property name="job" type="java.lang.String">
+            <column name="JOB" />
+        </property>
+        <property name="workplace" type="java.lang.String">
+            <column name="WORKPLACE" />
+        </property>
+        <one-to-one name="emp" class="com.yungame.bean.employee" property-ref="spouse"/>
+</class>
+</hibernate-mapping>

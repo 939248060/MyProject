@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-18 21:44:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yungame.bean.Posts" table="POSTS">
+        <id name="pid" type="java.lang.Integer">
+            <column name="PID" />
+            <generator class="identity" />
+        </id>
+        <property name="pname" type="java.lang.String">
+            <column name="PNAME" />
+        </property>
+        <property name="explains" type="java.lang.String">
+            <column name="EXPLAINS" />
+        </property>
+        <many-to-one name="dept" class="com.yungame.bean.department" fetch="join" lazy="false">
+            <column name="DEPT_POS" />
+        </many-to-one>
+        <one-to-one name="pemp"  class="com.yungame.bean.employee" lazy="false"/>
+    </class>
+</hibernate-mapping>
