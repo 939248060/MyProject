@@ -9,6 +9,7 @@ public class TestGeometric {
 			gtList[i] = new GeometricObject(i);
 			  
 			
+			
 		}
 	}
 
