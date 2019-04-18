@@ -8,8 +8,6 @@ public class TestGeometric {
 		for(int i=0;i<5;i++) {
 			gtList[i] = new GeometricObject(i);
 			  
-			
-			
 		}
 	}
 
