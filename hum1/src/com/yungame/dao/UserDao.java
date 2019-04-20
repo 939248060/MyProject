@@ -14,6 +14,7 @@ public class UserDao extends HibernateDaoSupport{
 	private static List<User> users;
 	public boolean checkUser(String username, String password){
 		System.out.println(this.getHibernateTemplate());
+		//System.out.println(username);
 		List<User> user=this.getHibernateTemplate().find("from User where username = ? and password = ?", username,password);
 		if(user!=null&&user.size()>0){
 			return true;
