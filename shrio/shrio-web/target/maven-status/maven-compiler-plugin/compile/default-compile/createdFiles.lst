@@ -1,0 +1,3 @@
+com\yumgame\controller\UserController.class
+com\yumgame\realm\AutoRealm.class
+com\yumgame\bean\User.class
